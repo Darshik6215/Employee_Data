@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('Includes/head.ejs') %>
+    <title>Home</title>
+  </head>
+  <body class="bg-slate-400">
+    <div
+      class="flex justify-between items-center flex-wrap px-5 p-4 bg-slate-500"
+    >
+      <h1 class="text-5xl text-white">Employee Data</h1>
+      <form method="get" action="/emp/create">
+        <button class="text-2xl text-white bg-black py-2 px-4 rounded">
+          Create New Employee
+        </button>
+      </form>
+    </div>
+    <div class="flex justify-around items-center flex-wrap max-w-5xl mx-auto">
+      <% data.forEach((empData) => { %>
+      <div class="border p-2 my-2 w-80">
+        <h2 class="text-2xl">Name: <%= empData.name %></h2>
+        <div class="flex justify-between items-center">
+          <h2 class="text-xl">Email: <%= empData.email %></h2>
+          <div class="flex gap-3">
+            <form action="/emp/<%= empData._id %>/edit" method="get">
+              <button>
+                <i class="fas fa-edit cursor-pointer text-blue-700"></i>
+              </button>
+            </form>
+            <form action="/emp/<%= empData._id %>?_method=DELETE" method="post">
+              <button>
+                <i class="fas fa-trash cursor-pointer text-red-700"></i>
+              </button>
+            </form>
+            <form action="/emp/<%= empData._id %>/show" method="get">
+              <button>
+                <i class="fa-solid fa-eye cursor-pointer text-slate-700"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <h2 class="text-xl">Age: <%= empData.age %></h2>
+        <div class="date flex gap-2">
+          <h2 class="text-xl">
+            Date: <%= empData.create_at.toString().split(" ")[4] %>
+          </h2>
+          <h2 class="text-xl">
+            <%= empData.create_at.toString().split(" ").slice(0,4).join(" ") %>
+          </h2>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

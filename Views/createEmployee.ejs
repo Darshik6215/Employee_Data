@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('Includes/head.ejs') %>
+    <title>Create</title>
+  </head>
+  <body class="bg-slate-400">
+    <div class="w-80 m-auto border-2 my-8 p-3 rounded">
+      <h2 class="text-3xl mb-5 underline font-bold">Add Employee Data:</h2>
+      <form
+        class="flex justify-center items-center flex-col mt-5 gap-2"
+        action="/emp"
+        method="post"
+      >
+        <input
+          type="text"
+          name="name"
+          class="border-2 w-full py-2 px-2 rounded border-none outline-none text-xl"
+          placeholder="Enter Name"
+        />
+        <input
+          type="email"
+          name="email"
+          class="border-2 w-full py-2 px-2 rounded border-none outline-none text-xl"
+          placeholder="Enter Email"
+        />
+        <input
+          type="text"
+          name="age"
+          class="border-2 w-full py-2 px-2 rounded border-none outline-none text-xl"
+          placeholder="Enter Age"
+        />
+        <button
+          class="bg-green-600 text-white uppercase font-bold tracking-widest w-full py-2 px-2 rounded border-none outline-none text-xl"
+        >
+          Submit
+        </button>
+      </form>
+      <div class="mt-5 text-center text-2xl">
+        <a href="/emp"> &leftarrow; Back To Home</a>
+      </div>
+    </div>
+  </body>
+</html>

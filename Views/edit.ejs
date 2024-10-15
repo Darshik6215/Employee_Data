@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('Includes/head.ejs') %>
+    <title>Edit</title>
+  </head>
+  <body class="bg-slate-400">
+    <div class="w-96 m-auto border-2 my-8 p-3 rounded">
+      <h2 class="text-3xl mb-5 underline font-bold">Edit Employee Data:</h2>
+
+      <h2 class="text-2xl">ID: <%= data._id %></h2>
+      <h2 class="text-2xl">Name: <%= data.name %></h2>
+
+      <div class="flex justify-between items-center">
+        <form
+          class="flex justify-center items-center gap-2"
+          action="/emp/<%= data._id %>?_method=PUT"
+          method="post"
+        >
+          <h2 class="text-xl">
+            Email:
+            <input
+              type="text"
+              class="py-2 px-2 rounded border-none outline-none text-xl"
+              value="<%= data.email %>"
+              name="email"
+            />
+          </h2>
+          <button>
+            <i
+              class="fas fa-circle-check cursor-pointer text-green-700 text-2xl"
+            ></i>
+          </button>
+        </form>
+      </div>
+
+      <h2 class="text-xl">Age: <%= data.age %></h2>
+
+      <div class="date flex gap-2">
+        <h2 class="text-xl">
+          Date: <%= data.create_at.toString().split(" ")[4] %>
+        </h2>
+        <h2 class="text-xl">
+          <%= data.create_at.toString().split(" ").slice(0,4).join(" ") %>
+        </h2>
+      </div>
+      <div class="mt-5 text-center text-2xl">
+        <a href="/emp"> &leftarrow; Back To Home</a>
+      </div>
+    </div>
+  </body>
+</html>
